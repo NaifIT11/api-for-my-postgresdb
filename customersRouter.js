@@ -68,7 +68,7 @@ customersRouter.get("/", async (req, res) => {
 });
 
 
-customersRouter.post("/customers" , async(req  ,res) => {
+customersRouter.post("/" , async(req  ,res) => {
     const {firstName , lastName , email , phone} = req.body;
     try {
         const customers = await sql`INSERT INTO Customers(first_name , last_name , email , phone) VALUES(${firstName} , ${lastName} , ${email} , ${phone})`;
