@@ -9,7 +9,7 @@ const sql = postgres(process.env.POSTGRES_URL);
 
 
 //middleware for all route
-app.use((req , res , next) => {
+customersRouter.use((req , res , next) => {
     const authorization = req.headers["authorization"] || req.headers["Authorization"];
 
     if(!authorization){
@@ -51,7 +51,7 @@ app.use((req , res , next) => {
     next();
 })
 
-app.get("/", async (req, res) => {
+customersRouter.get("/", async (req, res) => {
     try {
         const customers = await sql`SELECT * FROM Customers`;
         return res.status(200).json({
@@ -68,7 +68,7 @@ app.get("/", async (req, res) => {
 });
 
 
-app.post("/customers" , async(req  ,res) => {
+customersRouter.post("/customers" , async(req  ,res) => {
     const {firstName , lastName , email , phone} = req.body;
     try {
         const customers = await sql`INSERT INTO Customers(first_name , last_name , email , phone) VALUES(${firstName} , ${lastName} , ${email} , ${phone})`;
