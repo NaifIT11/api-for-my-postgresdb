@@ -11,7 +11,7 @@ const sql = postgres(process.env.POSTGRES_URL)
 
 
 app.get("/data" , async(req , res) => {
-    const authorization  = req.headers["authorization"];
+    const authorization  = req.headers["authorization"] || req.headers["Authorization"];
 
     if(!authorization){
         res.status(401).json({
