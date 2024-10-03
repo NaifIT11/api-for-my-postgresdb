@@ -66,8 +66,22 @@ app.get("/", async (req, res) => {
 });
 
 
-app.post("/customers" , (req  ,res) => {
-
+app.post("/customers" , async(req  ,res) => {
+    const {firstName , lastName , email , phone} = req.body;
+    try {
+        const customers = await sql`INSERT INTO Customers(first_name , last_name , email , phone) VALUES(${firstName} , ${lastName} , ${email} , ${phone})`;
+        return res.status(200).json({
+            status: 201,
+            message: "Record created successfully"
+        });
+    } catch (error) {
+        return res.status(500).json({
+            error: {
+                status: 500,
+                message: "Internal server error"
+            }
+        });
+    }
 })
 
 
