@@ -46,3 +46,9 @@ app.get("/data" , async(req , res) => {
 //use json parser for all routes
 app.use(bodyParser.json());
 
+
+
+
+app.listen(5000 , () => {
+    console.log("Server is running on port 5000")
+})
