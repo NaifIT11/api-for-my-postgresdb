@@ -1,7 +1,6 @@
 import dotenv from "dotenv";
 import express from "express";
 import bodyParser from "body-parser";
-import postgres from "postgres";
 import customersRouter from "./customersRouter";
 dotenv.config();
 
