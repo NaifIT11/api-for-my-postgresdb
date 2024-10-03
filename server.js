@@ -1,7 +1,8 @@
 import dotenv from "dotenv";
 import express from "express";
 import bodyParser from "body-parser";
-import customersRouter from "./customersRouter";
+import customersRouter from "./customersRouter.js";
+
 dotenv.config();
 
 const app = express();
@@ -9,6 +10,8 @@ const app = express();
 
 // Use JSON parser for all routes
 app.use(bodyParser.json());
+
+
 app.use("/customers" , customersRouter)
 
 
