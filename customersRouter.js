@@ -19,14 +19,6 @@ customersRouter.use((req , res , next) => {
                 message: "Authorization header must be defined"
             }
         });
-    if (!authorization) {
-        return res.status(401).json({
-            error: {
-                status: 401,
-                msessage: "Authorization header must be included"
-            }
-        })
-        };
     }
 
     const token = authorization.split(" ")[1];
@@ -36,14 +28,6 @@ customersRouter.use((req , res , next) => {
             error: {
                 status: 401,
                 message: "Token is invalid"
-            }
-        })
-    }
-    if (token !== process.env.API_KEY) {
-        return res.status(401).json({
-            error: {
-                status: 401,
-                message: "Token invalid"
             }
         })
     }
